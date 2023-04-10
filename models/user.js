@@ -20,49 +20,7 @@ const User = sequelize.define("user", {
   },
 });
 
-const Media = sequelize.define("Media", {
-  type: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  link: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  owner_id: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-  },
-});
 
-const Media_viewing = sequelize.define("media_viewing", {
-  mediaId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-});
-
-const Role = sequelize.define("role", {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
-
-const User_role = sequelize.define("user_role", {
-  user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  role_id: {
-    type: DataTypes.INTEGER(),
-    allowNull: false,
-  },
-});
 
 
 // (async () => {
