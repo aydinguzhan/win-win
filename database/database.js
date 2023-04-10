@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('win_win', 'root', '', {
-    host: 'localhost',
-    port : 3306,  
+const sequelize = new Sequelize('win_win','root','', {
+    host: process.env.DATABASE_HOST,
+    port : process.env.DATABASE_PORT,  
     dialect:'mysql',
     retry : 3,
   });
