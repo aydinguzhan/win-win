@@ -12,6 +12,6 @@ router.post("/login", auth.loginPost)
 router.get("/register", auth.registerGet);
 
 
-router.post("/login", auth.registerPost)
+router.post("/register", auth.registerPost)
 
 module.exports = router
