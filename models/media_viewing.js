@@ -11,3 +11,5 @@ const Media_viewing = sequelize.define("media_viewing", {
       allowNull: false,
     },
   });
+
+  module.exports = Media_viewing
