@@ -10,15 +10,32 @@ const populate = require("./database/dummy_data.js");
 
 const User = require("./models/user.js");
 const User_role = require("./models/user_role.js");
+const Role = require('./models/role.js')
 const sequelize = require("./database/database.js");
 
+User.hasOne(User_role, {
+  foreignKey: {
+    name : 'user_id',
+    allowNull: false,
+    field :'user_id'
+  }
+  
+})
+User_role.belongsTo(User)
 
-//   User_role.hasMany(User,{});
-//   User.belongsTo(User_role);
+Role.hasMany(User_role, {
+  foreignKey: {
+    name : 'role_id',
+    allowNull: false,
+    field :'role_id'
+  }
+});
+User_role.belongsTo(Role);
+
 
  (async () => {
-   //await sequelize.sync({alter : true});
-   //await populate()
+    await sequelize.sync({force : true});
+    await populate()
  })();
 
 // require("./models/user.js");
