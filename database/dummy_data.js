@@ -67,11 +67,7 @@ async function populate(){
         role_id : 2,
         user_id : 4
     })
-    
-   
    }
-
-
 }
 
  module.exports = populate;
