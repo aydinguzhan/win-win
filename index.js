@@ -17,28 +17,27 @@ User.hasOne(User_role, {
   foreignKey: {
     name : 'user_id',
     allowNull: false,
-    field :'user_id'
+    onDelete: 'RESTRICT',
+    onUpdate: 'RESTRICT'
   }
   
 })
-User_role.belongsTo(User)
+User_role.belongsTo(User, { foreignKey : "user_id"})
 
 Role.hasMany(User_role, {
   foreignKey: {
     name : 'role_id',
-    allowNull: false,
-    field :'role_id'
+    allowNull: false
   }
 });
-User_role.belongsTo(Role);
+User_role.belongsTo(Role, { foreignKey : 'role_id'});
 
 
  (async () => {
-    await sequelize.sync({force : true});
-    await populate()
+   await sequelize.sync({force : true});
+   await populate()
  })();
 
-// require("./models/user.js");
 
 app.use("/", router);
 app.use("/auth", authRouter);
