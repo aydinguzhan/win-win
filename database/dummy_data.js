@@ -1,5 +1,8 @@
 const User = require('../models/user.js');
 const User_role = require('../models/user_role.js');
+const Role = require('../models/role.js');
+const Media = require('../models/media.js');
+const Media_view = require('../models/media_viewing.js')
 
 async function populate(){
     const count = await User.count();
@@ -19,6 +22,7 @@ async function populate(){
     
     });
     await User.create({
+        // id : 7,
         username : "irem",
         lastname : "aydın",
         email : "irem@gmail.com",
@@ -26,19 +30,42 @@ async function populate(){
     
     });
     await User.create({
+        // id : 5,
         username : "furkan",
         lastname : "kılıç",
         email : "frkn23@gmail.com",
         password : "123456",
     
     });
+    
+    await Role.create({
+        id : 1,
+        name  : "admin"
+    });
+
+    await Role.create({
+        id : 2,
+        name  : "guest"
+    })
  
     await User_role.create({
         role_id : 1,
-     
-    })
+        user_id : 1
+    });
+
     await User_role.create({
         role_id : 2,
+        user_id : 2
+    });
+
+    await User_role.create({
+        role_id : 2,
+        user_id : 3
+    });
+
+    await User_role.create({
+        role_id : 2,
+        user_id : 4
     })
    }
 }
