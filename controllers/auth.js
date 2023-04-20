@@ -2,14 +2,15 @@ const { Op } = require('sequelize');
 const User = require('../models/user.js')
 
 const loginGet = async (req,res)=>{
-    let user = await User.findAll({
+    const {username,password} = req.body
+    let user = await User.findOne({
         where :{
           username : username
         },
         raw: true
      });
      console.log(user)
-     await res.send({message : "login"});
+     await res.setHeader()
 }
 
 const loginPost = async (req,res)=>{
