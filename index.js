@@ -11,7 +11,7 @@ const populate = require("./database/dummy_data.js");
 const User = require("./models/user.js");
 const User_role = require("./models/user_role.js");
 const Role = require('./models/role.js')
-const sequelize = require("./database/database.js");
+const sequelize = require("./database/sequelize.js");
 
 User.hasOne(User_role, {
   foreignKey: {
@@ -42,7 +42,7 @@ User_role.belongsTo(Role, { foreignKey : 'role_id'});
 app.use("/", router);
 app.use("/auth", authRouter);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.NODE_DOCKER_PORT || 5000;
 app.listen(PORT, () => {
   console.log(`${PORT} listened`);
 });
